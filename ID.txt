@@ -1,1 +1,6 @@
 K alpha3
+K beta
+Siegbanhn notation (K alpha etc.)
+Fe K alpha1, Fe K alpha2, Fe K beta1
+XIS Suzaku
+NXB

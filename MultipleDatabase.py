@@ -22,11 +22,12 @@ def CreateDatabase(dbname='Knowledge.db'):
     conn.close()
     return
 
-def insert(ID,description, link,dbname='Knowledge.db',other='-'):
+def insert(ID,description, link,other='-',dbname='Knowledge.db'):
     conn = sqlite3.connect(dbname)
+    #print('**   ',"INSERT INTO KNOWLEDGE (ID,DESCRIPTION,LINK,OTHER) \VALUES('"+ID+"','"+description+"','"+link+"','"+other+"')")
     c = conn.cursor()
     c.execute("INSERT INTO KNOWLEDGE (ID,DESCRIPTION,LINK,OTHER) \
-              VALUES('"+ID+"','"+description+"','"+link+"','-')")
+              VALUES('"+ID+"','"+description+"','"+link+"','"+other+"')")
     conn.commit() 
     #print ("Records created successfully")
     conn.close()
@@ -41,10 +42,10 @@ def select_all(dbname='Knowledge.db'):
     c = conn.cursor()
     cursor = c.execute("SELECT id, description, link, other from KNOWLEDGE")
     for row in cursor:
-        print("ID: ",row[0])
+        print("ID         : ",row[0])
         print("Description: ",row[1])
-        print("Link: ",row[2])
-        print("other: ",row[3])
+        print("Link       : ",row[2])
+        print("Other      : ",row[3])
         print('\n')
     conn.close()
     return
@@ -75,10 +76,10 @@ def like(keyword,dbname='Knowledge.db'):
     cursor = c.execute("SELECT * FROM KNOWLEDGE WHERE ID LIKE '%"+keyword+"%';")
     #print("SELECT * FROM KNOWLEDGE WHERE ID LIKE '%"+keyword+"%'")
     for row in cursor:
-        print("ID: ",row[0])
+        print("ID         : ",row[0])
         print("Description: ",row[1])
-        print("Link: ",row[2])
-        print("other: ",row[3])
+        print("Link       : ",row[2])
+        print("other      : ",row[3])
         print('\n')
     conn.close()
     return
